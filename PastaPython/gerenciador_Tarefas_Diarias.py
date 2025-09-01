@@ -8,6 +8,7 @@ def exibir_menu():
     print("4. Listar tarefas concluídas")
     print("5. Sair")
 
+
 def adicionar_tarefa(lista_tarefas):
     tarefa = input("Digite a descrição da tarefa: ").strip()
     if any(tarefa == item['descricao'] for item in lista_tarefas):
@@ -16,8 +17,10 @@ def adicionar_tarefa(lista_tarefas):
         lista_tarefas.append({"descricao": tarefa, "concluida": False})
         print(f"Tarefa '{tarefa}' adicionada com sucesso!")
 
+
 def marcar_concluida(lista_tarefas):
-    tarefa = input("Digite a descrição da tarefa a ser marcada como concluída: ").strip()
+    tarefa = input(
+        "Digite a descrição da tarefa a ser marcada como concluída: ").strip()
     for item in lista_tarefas:
         if item["descricao"] == tarefa:
             if item["concluida"]:
@@ -28,9 +31,11 @@ def marcar_concluida(lista_tarefas):
             return
     print(f"Tarefa '{tarefa}' não encontrada na lista.")
 
+
 def listar_tarefas(lista_tarefas, concluida):
     status = "concluídas" if concluida else "pendentes"
-    tarefas = [item["descricao"] for item in lista_tarefas if item["concluida"] == concluida]
+    tarefas = [item["descricao"]
+               for item in lista_tarefas if item["concluida"] == concluida]
 
     if tarefas:
         print(f"\nTarefas {status}:")
@@ -38,6 +43,7 @@ def listar_tarefas(lista_tarefas, concluida):
             print(f"{i}. {tarefa}")
     else:
         print(f"Não há tarefas {status} no momento.")
+
 
 # Programa principal
 lista_tarefas = []
